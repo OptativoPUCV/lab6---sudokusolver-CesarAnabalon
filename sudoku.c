@@ -123,8 +123,13 @@ List* get_adj_nodes(Node* n){
           {
             nodito=copy(n);
             nodito->sudo[i][j]=k;
-            
-            pushBack(list, nodito);
+            if (is_valid(nodito) == 1) 
+            {
+              pushBack(list, nodito);
+            } else 
+            {
+             free(nodito);
+            }
           }
           break;
         }
