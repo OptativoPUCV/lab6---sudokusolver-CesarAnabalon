@@ -131,7 +131,8 @@ List* get_adj_nodes(Node* n){
             else free(nodito);
             
           }
-          return list;
+          break;
+          //return list;
         }
       }
     }
