@@ -84,6 +84,7 @@ int is_valid(Node* n)
           for(j=c; j<c+3; j++)
           {
             num = n->sudo[i][j];
+            if(num == 0) continue;
             s = (i-r)*3 + (j-c);
             if(sub[s] == 1) return 0; 
             sub[s] = 1;
