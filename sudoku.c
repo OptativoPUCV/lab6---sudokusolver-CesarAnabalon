@@ -131,11 +131,11 @@ List* get_adj_nodes(Node* n){
             else 
             {
               free(nodito);
-              return list;
-
+              
             }
           }
         }
+        return list;
       }
     }
   return list;
