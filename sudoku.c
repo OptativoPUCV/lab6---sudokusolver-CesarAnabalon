@@ -119,10 +119,11 @@ List* get_adj_nodes(Node* n){
       {
         if(n->sudo[i][j] == 0)
         {
-          for( k=1;k<=9;k++)
+          for( k=0; k < 9; k++)
           {
             nodito=copy(n);
             nodito->sudo[i][j]=k;
+            
             if(is_valid(nodito))
             {
               pushBack(list, nodito);
