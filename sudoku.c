@@ -85,8 +85,9 @@ int row[9] = {0}, col[9] = {0}, sub[9] = {0};
                     sub[s] = 1;
                 }
             }
-            memset(sub, 0, sizeof(sub));
-        }
+          for (int k = 0; k < 9; k++) {
+            sub[k] = 0;
+        }        }
     }
     return 1;
 }
