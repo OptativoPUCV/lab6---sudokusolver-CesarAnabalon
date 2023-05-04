@@ -55,12 +55,12 @@ int is_valid(Node* n)
     {
       num = n->sudo[i][j];
       if(num == 0) continue;
-      if(fil[num] == 1) return 0; 
-      fil[num] = 1;
+      if(fil[num-1] == 1) return 0; 
+      fil[num-1] = 1;
     }
     for (int k = 0; k < 9; k++) 
     {
-      fil[k] = 0;
+        fil[k] = 0;
     }
   }
   
@@ -72,8 +72,8 @@ int is_valid(Node* n)
     {
       num = n->sudo[j][i];
       if(num == 0) continue;
-      if(col[num] == 1) return 0; 
-      col[num] = 1;
+      if(col[num-1] == 1) return 0; 
+      col[num-1] = 1;
     }
     for (int k = 0; k < 9; k++) 
     {
@@ -134,7 +134,7 @@ List* get_adj_nodes(Node* n){
               
             }
           }
-          return list;
+            return list;
         }
       }
     }
