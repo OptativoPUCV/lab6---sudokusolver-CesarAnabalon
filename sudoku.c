@@ -45,10 +45,10 @@ void print_node(Node* n){
 
 int is_valid(Node* n)
 {
-int row[9] = {0}, col[9] = {0}, sub[9] = {0};
+  int row[9] = {0} ;
     int i, j, r, c, s, num;
 
-    // Validar filas
+    // filas
     for(i=0; i<9; i++){
         for(j=0; j<9; j++){
             num = n->sudo[i][j];
@@ -60,7 +60,8 @@ int row[9] = {0}, col[9] = {0}, sub[9] = {0};
         row[k] = 0;
     }
     }
-
+  int col[9] = {0};
+    //columnas
     for(i=0; i<9; i++){
         for(j=0; j<9; j++){
             num = n->sudo[j][i];
@@ -72,17 +73,21 @@ int row[9] = {0}, col[9] = {0}, sub[9] = {0};
       col[k] = 0;
       }    
     }
-
-    // Validar submatrices de 3x3
-    for(r=0; r<9; r+=3){
-        for(c=0; c<9; c+=3){
-            for(i=r; i<r+3; i++){
-                for(j=c; j<c+3; j++){
-                    num = n->sudo[i][j];
-                    if(num == 0) continue;
-                    s = (i-r)*3 + (j-c);
-                    if(sub[s] == 1) return 0; // ya se repite el número en la submatriz
-                    sub[s] = 1;
+  int sub[9] = {0};
+  //3x3
+    for(r=0; r<9; r+=3)
+    {
+        for(c=0; c<9; c+=3)
+        {
+            for(i=r; i<r+3; i++)
+            {
+                for(j=c; j<c+3; j++)
+                {
+                  num = n->sudo[i][j];
+                  if(num == 0) continue;
+                  s = (i-r)*3 + (j-c);
+                  if(sub[s] == 1) return 0;
+                  sub[s] = 1;
                 }
             }
           for (int k = 0; k < 9; k++) {
