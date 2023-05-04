@@ -55,7 +55,10 @@ int is_valid(Node* n)
             if(row[num-1] == 1) return 0; 
             row[num-1] = 1;
         }
-        memset(row, 0, sizeof(row));
+        for (int k = 0; k < 9; k++) 
+        {
+        row[k] = 0;
+        }
     }
 
     for(i=0; i<9; i++){
