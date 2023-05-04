@@ -109,6 +109,7 @@ int is_valid(Node* n)
 
 
 List* get_adj_nodes(Node* n){
+  
   List* list=createList();
   Node* nodito = createNode();
   int i, j, k;
@@ -126,7 +127,7 @@ List* get_adj_nodes(Node* n){
             if (is_valid(nodito) == 1)
             {
               pushBack(list, nodito);
-              print_node(nodito);
+              //print_node(nodito);
             }
             else 
             {
@@ -134,7 +135,7 @@ List* get_adj_nodes(Node* n){
               
             }
           }
-            return list;
+          return list;
         }
       }
     }
