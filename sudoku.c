@@ -68,7 +68,9 @@ int row[9] = {0}, col[9] = {0}, sub[9] = {0};
             if(col[num-1] == 1) return 0; 
             col[num-1] = 1;
         }
-        memset(col, 0, sizeof(col));
+        for (int k = 0; k < 9; k++) {
+        row[k] = 0;
+    }
     }
 
     // Validar submatrices de 3x3
@@ -83,9 +85,7 @@ int row[9] = {0}, col[9] = {0}, sub[9] = {0};
                     sub[s] = 1;
                 }
             }
-            for (int k = 0; k < 9; k++) {
-        row[k] = 0;
-    }
+            memset(sub, 0, sizeof(sub));
         }
     }
     return 1;
