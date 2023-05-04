@@ -43,59 +43,8 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n)
-{
-    int row[9] = {0}, col[9] = {0}, sub[9] = {0};
-    int i, j, r, c, s, num;
+int is_valid(Node* n){
 
-    for(i=0; i<9; i++){
-        for(j=0; j<9; j++){
-            num = n->sudo[i][j];
-            if(num == 0) continue;
-            if(row[num-1] == 1) return 0; 
-            row[num-1] = 1;
-        }
-        for (int k = 0; k < 9; k++) 
-        {
-        row[k] = 0;
-        }
-    }
-
-    for(i=0; i<9; i++){
-        for(j=0; j<9; j++){
-            num = n->sudo[j][i];
-            if(num == 0) continue;
-            if(col[num-1] == 1) return 0; 
-            col[num-1] = 1;
-        }
-        for (int k = 0; k < 9; k++) 
-        {
-        row[k] = 0;
-        }
-    }
-
-    // Validar submatrices de 3x3
-    for(r=0; r<9; r+=3)
-    {
-      for(c=0; c<9; c+=3)
-      {
-        for(i=r; i<r+3; i++)
-        {
-          for(j=c; j<c+3; j++)
-          {
-            num = n->sudo[i][j];
-            if(num == 0) continue;
-            s = (i-r)*3 + (j-c);
-            if(sub[s] == 1) return 0; 
-            sub[s] = 1;
-          }
-        }
-        for (int k = 0; k < 9; k++) 
-        {
-        row[k] = 0;
-        }
-        }
-    }
     return 1;
 }
 
@@ -104,7 +53,6 @@ List* get_adj_nodes(Node* n){
   List* list=createList();
   Node* nodito = createNode();
   int i, j, k;
-  
   for ( i = 0; i<9; i++)
     {
       for( j = 0; j<9; j++)
@@ -120,6 +68,7 @@ List* get_adj_nodes(Node* n){
           break;
         }
       }
+      if(j !=9) break;
     }
     return list;
 }
