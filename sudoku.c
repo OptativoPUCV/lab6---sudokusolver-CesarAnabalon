@@ -66,6 +66,7 @@ List* get_adj_nodes(Node* n){
             break;
           }
         }
+      if(j!=9) break;
     }
     return list;
 }
