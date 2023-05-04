@@ -94,7 +94,7 @@ int is_valid(Node* n)
           num = n->sudo[i][j];
           if(num == 0) continue;
           s = (i-r)*3 + (j-c);
-          if(sub[s-1] == 1) return 0;
+          if(sub[s] == 1) return 0;
           sub[s] = 1;
         }
       }
