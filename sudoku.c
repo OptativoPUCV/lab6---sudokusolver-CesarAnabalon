@@ -128,11 +128,13 @@ List* get_adj_nodes(Node* n){
               pushBack(list, nodito);
               print_node(nodito);
             }
-            else free(nodito);
-            
+            else 
+            {
+              free(nodito);
+              return list;
+            }
           }
           break;
-          //return list;
         }
       }
     }
