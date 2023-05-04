@@ -68,22 +68,31 @@ int is_valid(Node* n)
             if(col[num-1] == 1) return 0; 
             col[num-1] = 1;
         }
-        memset(col, 0, sizeof(col));
+        for (int k = 0; k < 9; k++) 
+        {
+        row[k] = 0;
+        }
     }
 
     // Validar submatrices de 3x3
-    for(r=0; r<9; r+=3){
-        for(c=0; c<9; c+=3){
-            for(i=r; i<r+3; i++){
-                for(j=c; j<c+3; j++){
-                    num = n->sudo[i][j];
-                    if(num == 0) continue;
-                    s = (i-r)*3 + (j-c);
-                    if(sub[s] == 1) return 0; // ya se repite el número en la submatriz
-                    sub[s] = 1;
-                }
-            }
-            memset(sub, 0, sizeof(sub));
+    for(r=0; r<9; r+=3)
+    {
+      for(c=0; c<9; c+=3)
+      {
+        for(i=r; i<r+3; i++)
+        {
+          for(j=c; j<c+3; j++)
+          {
+            num = n->sudo[i][j];
+            s = (i-r)*3 + (j-c);
+            if(sub[s] == 1) return 0; 
+            sub[s] = 1;
+          }
+        }
+        for (int k = 0; k < 9; k++) 
+        {
+        row[k] = 0;
+        }
         }
     }
     return 1;
