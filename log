@@ -13,3 +13,9 @@ sudoku.c:61:19: error: unused variable ‘nodito’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 9a65407
+Thu 04 May 2023 01:36:03 AM UTC: 
+ sudoku.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+ tests:  0|5
+total_score: 0/70
+5d12cf2
