@@ -55,7 +55,7 @@ int is_valid(Node* n)
     {
       num = n->sudo[i][j];
       if(num == 0) continue;
-      if(fil[num-1] == 1) return 0; 
+      if(fil[num] == 1) return 0; 
       fil[num] = 1;
     }
     for (int k = 0; k < 9; k++) 
@@ -72,7 +72,7 @@ int is_valid(Node* n)
     {
       num = n->sudo[j][i];
       if(num == 0) continue;
-      if(col[num-1] == 1) return 0; 
+      if(col[num] == 1) return 0; 
       col[num] = 1;
     }
     for (int k = 0; k < 9; k++) 
