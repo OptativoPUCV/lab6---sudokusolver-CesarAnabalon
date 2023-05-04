@@ -82,7 +82,7 @@ int is_valid(Node* n)
   }
   
   int sub[9] = {0};
-  //3x3
+    //3x3
   for(r=0; r<9; r+=3)
   {
     for(c=0; c<9; c+=3)
@@ -131,7 +131,8 @@ List* get_adj_nodes(Node* n){
             else free(nodito);
             
           }
-          return list;
+          break;
+          //return list;
         }
       }
     }
