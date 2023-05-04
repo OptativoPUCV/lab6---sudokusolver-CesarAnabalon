@@ -45,26 +45,23 @@ void print_node(Node* n){
 
 int is_valid(Node* n)
 {
-int row[9] = {0}, col[9] = {0}, sub[9] = {0};
+    int row[9] = {0}, col[9] = {0}, sub[9] = {0};
     int i, j, r, c, s, num;
 
-    // Validar filas
     for(i=0; i<9; i++){
         for(j=0; j<9; j++){
             num = n->sudo[i][j];
             if(num == 0) continue;
-            if(row[num-1] == 1) return 0; // ya se repite el número en la fila
+            if(row[num-1] == 1) return 0; 
             row[num-1] = 1;
         }
-        memset(row, 0, sizeof(row));
     }
 
-    // Validar columnas
     for(i=0; i<9; i++){
         for(j=0; j<9; j++){
             num = n->sudo[j][i];
             if(num == 0) continue;
-            if(col[num-1] == 1) return 0; // ya se repite el número en la columna
+            if(col[num-1] == 1) return 0; 
             col[num-1] = 1;
         }
         memset(col, 0, sizeof(col));
