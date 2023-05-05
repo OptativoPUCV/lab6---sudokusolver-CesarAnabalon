@@ -125,8 +125,7 @@ List* get_adj_nodes(Node* n){
           esta =1;
           for( k=1;k<=9;k++)
           {
-            Node* nodito=createNode();
-            nodito = copy(n);
+            Node* nodito=copy(n);
             nodito->sudo[i][j]=k;
             if (is_valid(nodito) == 1)
             {
