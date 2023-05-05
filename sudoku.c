@@ -141,12 +141,12 @@ List* get_adj_nodes(Node* n){
           break;
           //return list;
         }
-        if(esta == 1)
+        
+      }
+      if(esta == 1)
         {
           break;
         }
-      }
-      
     }
   return list;
 }
