@@ -145,7 +145,10 @@ List* get_adj_nodes(Node* n){
           break;
         }
       }
-      
+      if(esta == 1)
+        {
+          break;
+        }
     }
   return list;
 }
