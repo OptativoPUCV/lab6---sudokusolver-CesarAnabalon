@@ -141,7 +141,7 @@ List* get_adj_nodes(Node* n){
           break;
         }
       }
-      if(esta)
+      if(esta == 1)
       {
         break;
       }
