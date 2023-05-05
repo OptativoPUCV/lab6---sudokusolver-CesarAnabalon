@@ -136,14 +136,16 @@ List* get_adj_nodes(Node* n){
             {
               free(nodito);
             }
+            
           }
           break;
         }
+        if(esta == 1)
+        {
+          break;
+        }
       }
-      if(esta == 1)
-      {
-        break;
-      }
+      
     }
   return list;
 }
