@@ -988,3 +988,19 @@ test.c:7:8: error: ‘_strdup’ defined but not used [-Werror=unused-function]
 cc1: all warnings being treated as errors
 Compilation failed
 cc90fd6
+Sat 06 May 2023 04:28:41 PM UTC: 
+ sudoku.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:112:28: error: passing argument 1 of ‘subMatricesValidas’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  112 |     if(subMatricesValidas(n->sudo,k)==0 )return 0;
+      |                           ~^~~~~~
+      |                            |
+      |                            int (*)[9]
+sudoku.c:47:28: note: expected ‘int (*)[10]’ but argument is of type ‘int (*)[9]’
+   47 | int subMatricesValidas(int sudoku[][COL],int k)
+      |                        ~~~~^~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+abc2c1b

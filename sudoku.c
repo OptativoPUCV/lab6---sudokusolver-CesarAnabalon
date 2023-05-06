@@ -65,7 +65,8 @@ int subMatricesValidas(int sudoku[][COL],int k)
     }
   }
   free(busq);
-
+  return 1;
+}
 int is_valid(Node* n)
 {
   int fil[9] = {0} ;
