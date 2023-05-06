@@ -462,3 +462,14 @@ sudoku.c:49:13: error: unused variable ‘r’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 f5c4225
+Sat 06 May 2023 03:20:19 PM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:49:13: error: unused variable ‘r’ [-Werror=unused-variable]
+   49 |   int i, j, r, num;
+      |             ^
+cc1: all warnings being treated as errors
+Compilation failed
+722ce4f
