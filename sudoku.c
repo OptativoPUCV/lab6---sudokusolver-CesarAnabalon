@@ -46,7 +46,7 @@ void print_node(Node* n){
 int is_valid(Node* n)
 {
   int fil[9] = {0} ;
-  int i, j, num;
+  int i, j, r, c, s, num;
 
     // filas
   for(i=0; i<9; i++)
@@ -81,26 +81,29 @@ int is_valid(Node* n)
     }    
   }
   
-
-  int submatrices[9][10] = {0}; // Para marcar los números en las submatrices de 3x3
-
-    for (int k = 0; k < 9; k++) {
-        int submatrix_start_row = 3 * (k / 3);
-        int submatrix_start_col = 3 * (k % 3);
-
-        for (int p = 0; p < 9; p++) {
-            int i = submatrix_start_row + (p / 3);
-            int j = submatrix_start_col + (p % 3);
-            int num = n->sudo[i][j];
-
-            // Validar submatriz
-            if (submatrices[k][num] == 1) {
-                return 0; // Número repetido en la submatriz, no es válido
-            } else {
-                submatrices[k][num] = 1;
-            }
+  int sub[9] = {0};
+  //3x3
+  for(r=0; r<9; r+=3)
+  {
+    for(c=0; c<9; c+=3)
+    {
+      for(i=r; i<r+3; i++)
+      {
+        for(j=c; j<c+3; j++)
+        {
+          num = n->sudo[i][j];
+          if(num == 0) continue;
+          s = (i-r)*3 + (j-c);
+          if(sub[s] == 1) return 0;
+          sub[s] = 1;
         }
+      }
+      for (int k = 0; k < 9; k++) 
+      {
+        sub[k] = 0;
+      }        
     }
+  }
   
   return 1;
 }
@@ -109,41 +112,42 @@ int is_valid(Node* n)
 List* get_adj_nodes(Node* n){
   
   List* list=createList();
-  //int esta = 0;
+  int esta = 0;
   int i, j, k;
   
   for ( i = 0; i<9; i++)
-  {
-    for( j = 0; j<9; j++)
     {
-      
-      if(n->sudo[i][j] == 0)
+      for( j = 0; j<9; j++)
       {
-        //esta =1;
-        for( k=1;k<=9;k++)
+        
+        if(n->sudo[i][j] == 0)
         {
-          Node* nodito=copy(n);
-          nodito->sudo[i][j] = k;
-          if (is_valid(nodito) == 1)
+          esta =1;
+          for( k=1;k<=9;k++)
           {
-            pushBack(list, nodito);
-            print_node(nodito);
+            Node* nodito=copy(n);
+            nodito->sudo[i][j]=k;
+            if (is_valid(nodito) == 1)
+            {
+              pushBack(list, nodito);
+              print_node(nodito);
+            }
+            else 
+            {
+              free(nodito);
+            }
+            
           }
-          else 
-          {
-            free(nodito);
-          }
+          break;
+          //return list;
         }
-        //break;
-        return list;
+        if(esta == 1)
+        {
+          break;
+        }
       }
       
-    }/*
-    if(esta == 1)
-    {
-      break;
-    }*/
-  }
+    }
   return list;
 }
 
