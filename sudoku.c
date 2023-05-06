@@ -83,23 +83,27 @@ int is_valid(Node* n)
   
   int sub[10] = {0};
   //3x3
-for (i = 0; i < 9; i++) {
-        for (j = 0; j < 9; j++) {
-            int num1 = 3 * (i / 3) + (j / 3);
-            int num2 = 3 * (i % 3) + (j % 3);
-            int num = n->sudo[i][j];
-
-           
-            if (sub[num] == 1)
-                return 0;
-            else
-                sub[num] = 1;
-        }
-        for (int k = 0; k < 10; k++) 
-        {
-          sub[k] = 0;
-        }
+  for (i = 0; i < 9; i++) 
+  {
+    for (j = 0; j < 9; j++) 
+    {
+      int num1 = 3 * (i / 3) + (j / 3);
+      int num2 = 3 * (i % 3) + (j % 3);
+      int num = n->sudo[num1][num2];
+      
+      if (sub[num] == 1)
+      {
+        return 0;
+      }
+      else{
+        sub[num] = 1;
+      }
     }
+    for (int k = 0; k < 10; k++) 
+    {
+      sub[k] = 0;
+    }
+  }
   
   return 1;
 }
