@@ -893,3 +893,36 @@ sudoku.c:198:9: error: implicit declaration of function ‘freeNode’; did you 
 cc1: all warnings being treated as errors
 Compilation failed
 717ea23
+Sat 06 May 2023 04:22:05 PM UTC: 
+ sudoku.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:179:13: error: implicit declaration of function ‘isEmpty’; did you mean ‘is_empty’? [-Werror=implicit-function-declaration]
+  179 |     while (!isEmpty(S)) {
+      |             ^~~~~~~
+      |             is_empty
+sudoku.c:186:13: error: implicit declaration of function ‘freeStack’; did you mean ‘createStack’? [-Werror=implicit-function-declaration]
+  186 |             freeStack(S);
+      |             ^~~~~~~~~
+      |             createStack
+sudoku.c:192:32: error: invalid use of incomplete typedef ‘List’
+  192 |         for (int i = 0; i < adj->size; i++) {
+      |                                ^~
+sudoku.c:193:31: error: implicit declaration of function ‘getElement’ [-Werror=implicit-function-declaration]
+  193 |             adj_node = (Node*)getElement(adj, i); // Obtener nodo adyacente
+      |                               ^~~~~~~~~~
+sudoku.c:193:24: error: cast to pointer from integer of different size [-Werror=int-to-pointer-cast]
+  193 |             adj_node = (Node*)getElement(adj, i); // Obtener nodo adyacente
+      |                        ^
+sudoku.c:196:9: error: implicit declaration of function ‘freeList’; did you mean ‘createList’? [-Werror=implicit-function-declaration]
+  196 |         freeList(adj); // Liberar memoria de la lista de nodos adyacentes
+      |         ^~~~~~~~
+      |         createList
+sudoku.c:198:9: error: implicit declaration of function ‘freeNode’; did you mean ‘createNode’? [-Werror=implicit-function-declaration]
+  198 |         freeNode(current); // Liberar memoria del nodo actual
+      |         ^~~~~~~~
+      |         createNode
+cc1: all warnings being treated as errors
+Compilation failed
+3500bee

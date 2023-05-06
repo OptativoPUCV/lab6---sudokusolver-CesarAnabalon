@@ -174,7 +174,7 @@ int is_final(Node* n){
 
 Node* DFS(Node* initial, int* cont){
   Stack* S = createStack(); // Crear una pila vacía
-    push(S, n); // Insertar el nodo inicial en la pila
+    push(S, initial); // Insertar el nodo inicial en la pila
 
     while (!isEmpty(S)) {
         Node* current = (Node*)top(S); // Obtener el primer nodo de la pila sin eliminarlo
@@ -183,7 +183,7 @@ Node* DFS(Node* initial, int* cont){
 
         if (is_final(current)) {
             // Liberar memoria del stack
-            free(S);
+            freeStack(S);
             return current; // Retornar nodo final
         }
 
@@ -198,10 +198,9 @@ Node* DFS(Node* initial, int* cont){
         freeNode(current); // Liberar memoria del nodo actual
     }
 
-    free(S); // Liberar memoria del stack
+    freeStack(S); // Liberar memoria del stack
     return NULL; // No se encontró solución
 }
-
 
 
 
