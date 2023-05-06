@@ -44,7 +44,7 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int subMatricesValidas(int sudoku[FIL][COL],int k)
+int subMatricesValidas(int sudoku[][COL],int k)
 {
   int *busq = (int*) calloc(10,sizeof(int));
 
@@ -65,7 +65,8 @@ int subMatricesValidas(int sudoku[FIL][COL],int k)
     }
   }
   free(busq);
-
+  return 1;
+}
 int is_valid(Node* n)
 {
   int fil[9] = {0} ;
