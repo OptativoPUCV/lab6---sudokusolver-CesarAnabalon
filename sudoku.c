@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
-
+#define FIL 9
+#define COL 9
 
 typedef struct{
    int sudo[9][9];
@@ -43,6 +44,28 @@ void print_node(Node* n){
     printf("\n");
 }
 
+int subMatricesValidas(int sudoku[][COL],int k)
+{
+  int *busq = (int*) calloc(10,sizeof(int);
+
+  for(int p = 0; p < 9; p++)
+  {
+    int i=3*(k/3) + (p/3) ;
+    int j=3*(k%3) + (p%3) ;
+    
+    if(sudoku[i][j] !=0)
+    {
+      busq[sudoku[i][j]] +=1;
+
+      if(busq[sudoku[i][j]] ==2)
+      {
+        free(busq);
+        return 0;
+      }
+    }
+  }
+  free(busq);
+
 int is_valid(Node* n)
 {
   int fil[9] = {0} ;
@@ -81,28 +104,11 @@ int is_valid(Node* n)
     }    
   }
   
-  int sub[10] = {0};
+
   //3x3
-  for (i = 0; i < 9; i++) 
+  for (int k = 0; k < 9; k++) 
   {
-    for (j = 0; j < 9; j++) 
-    {
-      int num1 = 3 * (i / 3) + (j / 3);
-      int num2 = 3 * (i % 3) + (j % 3);
-      int num = n->sudo[num1][num2];
-      
-      if (sub[num] == 1)
-      {
-        return 0;
-      }
-      else{
-        sub[num] = 1;
-      }
-    }
-    for (int k = 0; k < 10; k++) 
-    {
-      sub[k] = 0;
-    }
+    if(subMatricesValidas(n->sudo,k)==0 )return 0;
   }
   
   return 1;
