@@ -577,3 +577,17 @@ Sat 06 May 2023 03:35:57 PM UTC:
  tests:  1|4
 total_score: 10/70
 c1d773c
+Sat 06 May 2023 03:44:26 PM UTC: 
+ sudoku.c | 70 ++++++++++++++++++++++++++++++++++++++++------------------------
+ 1 file changed, 44 insertions(+), 26 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:89:17: error: unused variable ‘num2’ [-Werror=unused-variable]
+   89 |             int num2 = 3 * (i % 3) + (j % 3);
+      |                 ^~~~
+sudoku.c:88:17: error: unused variable ‘num1’ [-Werror=unused-variable]
+   88 |             int num1 = 3 * (i / 3) + (j / 3);
+      |                 ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+053d97c

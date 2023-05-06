@@ -45,45 +45,63 @@ void print_node(Node* n){
 
 int is_valid(Node* n)
 {
-  int rows[9][10] = {0};       // Para marcar los números en las filas
-    int columns[9][10] = {0};    // Para marcar los números en las columnas
-    int submatrices[9][10] = {0}; // Para marcar los números en las submatrices de 3x3
+  int fil[9] = {0} ;
+  int i, j,num;
 
-    int i, j, num, k, p;
-
-    // Validación de filas y columnas
-    for (i = 0; i < 9; i++) {
+    // filas
+  for(i=0; i<9; i++)
+  {
+    for(j=0; j<9; j++)
+    {
+      num = n->sudo[i][j];
+      if(num == 0) continue;
+      if(fil[num-1] == 1) return 0; 
+      fil[num-1] = 1;
+    }
+    for (int k = 0; k < 9; k++) 
+    {
+        fil[k] = 0;
+    }
+  }
+  
+  int col[9] = {0};
+    //columnas
+  for(i=0; i<9; i++)
+  {
+    for(j=0; j<9; j++)
+    {
+      num = n->sudo[j][i];
+      if(num == 0) continue;
+      if(col[num-1] == 1) return 0; 
+      col[num-1] = 1;
+    }
+    for (int k = 0; k < 9; k++) 
+    {
+    col[k] = 0;
+    }    
+  }
+  
+  int sub[10] = {0};
+  //3x3
+for (i = 0; i < 9; i++) {
         for (j = 0; j < 9; j++) {
-            num = n->sudo[i][j];
-            if (num == 0) continue;
-            
-            // Verificar si el número ya está marcado en la fila
-            if (rows[i][num] == 1) return 0;
-            rows[i][num] = 1;
-            
-            // Verificar si el número ya está marcado en la columna
-            if (columns[j][num] == 1) return 0;
-            columns[j][num] = 1;
+            int num1 = 3 * (i / 3) + (j / 3);
+            int num2 = 3 * (i % 3) + (j % 3);
+            int num = n->sudo[i][j];
+
+           
+            if (sub[num] == 1)
+                return 0;
+            else
+                sub[num] = 1;
+        }
+        for (int k = 0; k < 10; k++) 
+        {
+          sub[k] = 0;
         }
     }
-
-    // Validación de submatrices de 3x3
-    for (k = 0; k < 9; k++) {
-        int submatrix_start_row = 3 * (k / 3);
-        int submatrix_start_col = 3 * (k % 3);
-
-        for (p = 0; p < 9; p++) {
-            int i = submatrix_start_row + (p / 3);
-            int j = submatrix_start_col + (p % 3);
-            num = n->sudo[i][j];
-
-            // Verificar si el número ya está marcado en la submatriz
-            if (submatrices[k][num] == 1) return 0;
-            submatrices[k][num] = 1;
-        }
-    }
-
-    return 1;
+  
+  return 1;
 }
 
 
