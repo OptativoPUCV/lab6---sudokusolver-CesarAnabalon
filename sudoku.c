@@ -81,13 +81,25 @@ int is_valid(Node* n)
     }    
   }
   
-  int sub[9] = {0};
+  int sub[9][10] = {0};
   //3x3
-  for(r=0; r<9; r+=3)
+  for (int k = 0; k < 9; k++) 
   {
-    for(c=0; c<9; c+=3)
+    int submatrix_start_row = 3 * (k / 3);
+    int submatrix_start_col = 3 * (k % 3);
+  
+    for (int p = 0; p < 9; p++) 
     {
-      
+        int i = submatrix_start_row + (p / 3);
+        int j = submatrix_start_col + (p % 3);
+        int num = n->sudo[i][j];
+
+
+        if (sub[k][num] == 1) {
+            return 0; 
+        } else {
+            sub[k][num] = 1;
+        }
     }
   }
   
