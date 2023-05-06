@@ -820,3 +820,43 @@ sudoku.c:199:9: error: implicit declaration of function ‘freeList’; did you 
 cc1: all warnings being treated as errors
 Compilation failed
 cf6126f
+Sat 06 May 2023 04:18:37 PM UTC: 
+ sudoku.c | 35 +++++++++++++++++------------------
+ 1 file changed, 17 insertions(+), 18 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:177:13: error: ‘n’ undeclared (first use in this function)
+  177 |     push(S, n); // Insertar el nodo inicial en la pila
+      |             ^
+sudoku.c:177:13: note: each undeclared identifier is reported only once for each function it appears in
+sudoku.c:179:13: error: implicit declaration of function ‘isEmpty’; did you mean ‘is_empty’? [-Werror=implicit-function-declaration]
+  179 |     while (!isEmpty(S)) {
+      |             ^~~~~~~
+      |             is_empty
+sudoku.c:180:25: error: void value not ignored as it ought to be
+  180 |         Node* current = pop(S); // Sacar y eliminar el primer nodo de la pila
+      |                         ^~~
+sudoku.c:185:13: error: implicit declaration of function ‘freeStack’; did you mean ‘createStack’? [-Werror=implicit-function-declaration]
+  185 |             freeStack(S);
+      |             ^~~~~~~~~
+      |             createStack
+sudoku.c:186:13: error: implicit declaration of function ‘freeNode’; did you mean ‘createNode’? [-Werror=implicit-function-declaration]
+  186 |             freeNode(current);
+      |             ^~~~~~~~
+      |             createNode
+sudoku.c:192:32: error: invalid use of incomplete typedef ‘List’
+  192 |         for (int i = 0; i < adj->size; i++) {
+      |                                ^~
+sudoku.c:193:24: error: implicit declaration of function ‘getElement’ [-Werror=implicit-function-declaration]
+  193 |             adj_node = getElement(adj, i); // Obtener nodo adyacente
+      |                        ^~~~~~~~~~
+sudoku.c:193:22: error: assignment to ‘Node *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+  193 |             adj_node = getElement(adj, i); // Obtener nodo adyacente
+      |                      ^
+sudoku.c:196:9: error: implicit declaration of function ‘freeList’; did you mean ‘createList’? [-Werror=implicit-function-declaration]
+  196 |         freeList(adj); // Liberar memoria de la lista de nodos adyacentes
+      |         ^~~~~~~~
+      |         createList
+cc1: all warnings being treated as errors
+Compilation failed
+0ad6fcc

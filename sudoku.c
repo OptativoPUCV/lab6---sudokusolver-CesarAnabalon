@@ -173,33 +173,32 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
-  Stack* stack = createStack(); // Crear una pila vacía
-    push(stack, n); // Insertar el nodo inicial en la pila
+  Stack* S = createStack(); // Crear una pila vacía
+    push(S, n); // Insertar el nodo inicial en la pila
 
-    while (!isEmpty(stack)) {
-        (*cont)++; // Incrementar el contador de iteraciones
+    while (!isEmpty(S)) {
+        Node* current = pop(S); // Sacar y eliminar el primer nodo de la pila
+        (*cont)++; // Incrementar contador de iteraciones
 
-        Node* current = pop(stack); // Sacar y eliminar el primer nodo de la pila
-
-        if (is_final_state(current)) {
-            freeStack(stack); // Liberar la memoria utilizada por la pila
-            return current; // Retornar el nodo final
+        if (is_final(current)) {
+            // Liberar memoria del stack y del nodo actual
+            freeStack(S);
+            freeNode(current);
+            return current; // Retornar nodo final
         }
 
-        List* adjacent_nodes = get_adjacent_nodes(current); // Obtener la lista de nodos adyacentes
-
+        List* adj = get_adj_nodes(current); // Obtener lista de nodos adyacentes
         Node* adj_node;
-        ListIterator* it = createIterator(adjacent_nodes);
-        while ((adj_node = next(it)) != NULL) {
-            push(stack, adj_node); // Agregar los nodos adyacentes a la pila
+        for (int i = 0; i < adj->size; i++) {
+            adj_node = getElement(adj, i); // Obtener nodo adyacente
+            push(S, adj_node); // Insertar nodo adyacente en pila
         }
+        freeList(adj); // Liberar memoria de la lista de nodos adyacentes
 
-        freeNode(current); // Liberar la memoria utilizada por el nodo actual
-        freeListIterator(it); // Liberar la memoria utilizada por el iterador
-        freeList(adjacent_nodes); // Liberar la memoria utilizada por la lista de nodos adyacentes
+        freeNode(current); // Liberar memoria del nodo actual
     }
 
-    freeStack(stack); // Liberar la memoria utilizada por la pila
+    freeStack(S); // Liberar memoria del stack
     return NULL;
 }
 
