@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
-#define FIL 9
-#define COL 9
+#define FIL 10
+#define COL 10
 
 typedef struct{
    int sudo[9][9];
@@ -44,7 +44,7 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int subMatricesValidas(int sudoku[][COL], int k)
+int subMatricesValidas(int sudoku[FIL][COL],int k)
 {
   int *busq = (int*) calloc(10,sizeof(int));
 
@@ -64,11 +64,7 @@ int subMatricesValidas(int sudoku[][COL], int k)
       }
     }
   }
-  
   free(busq);
-  return 1;
-  
-}
 
 int is_valid(Node* n)
 {
@@ -173,33 +169,7 @@ int is_final(Node* n){
 }
 
 Node* DFS(Node* initial, int* cont){
-  Stack* S = createStack(); // Crear una pila vacía
-    push(S, initial); // Insertar el nodo inicial en la pila
-
-    while (!isEmpty(S)) {
-        Node* current = (Node*)top(S); // Obtener el primer nodo de la pila sin eliminarlo
-        pop(S); // Eliminar el primer nodo de la pila
-        (*cont)++; // Incrementar contador de iteraciones
-
-        if (is_final(current)) {
-            // Liberar memoria del stack
-            freeStack(S);
-            return current; // Retornar nodo final
-        }
-
-        List* adj = get_adj_nodes(current); // Obtener lista de nodos adyacentes
-        Node* adj_node;
-        for (int i = 0; i < adj->size; i++) {
-            adj_node = (Node*)getElement(adj, i); // Obtener nodo adyacente
-            push(S, adj_node); // Insertar nodo adyacente en pila
-        }
-        freeList(adj); // Liberar memoria de la lista de nodos adyacentes
-
-        freeNode(current); // Liberar memoria del nodo actual
-    }
-
-    freeStack(S); // Liberar memoria del stack
-    return NULL; // No se encontró solución
+  return NULL;
 }
 
 
