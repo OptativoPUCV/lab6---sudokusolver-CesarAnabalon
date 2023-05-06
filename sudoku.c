@@ -46,7 +46,7 @@ void print_node(Node* n){
 
 int subMatricesValidas(int sudoku[][COL],int k)
 {
-  int *busq = (int*) calloc(10,sizeof(int);
+  int *busq = (int*) calloc(10,sizeof(int));
 
   for(int p = 0; p < 9; p++)
   {
