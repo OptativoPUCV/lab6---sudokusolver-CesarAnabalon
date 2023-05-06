@@ -761,3 +761,62 @@ Sat 06 May 2023 04:07:48 PM UTC:
  tests:  6|2
 total_score: 45/70
 b5e8591
+Sat 06 May 2023 04:16:15 PM UTC: 
+ sudoku.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+In file included from test.c:5:
+sudoku.c: In function ‘DFS’:
+sudoku.c:177:17: error: ‘n’ undeclared (first use in this function)
+  177 |     push(stack, n); // Insertar el nodo inicial en la pila
+      |                 ^
+sudoku.c:177:17: note: each undeclared identifier is reported only once for each function it appears in
+sudoku.c:179:13: error: implicit declaration of function ‘isEmpty’; did you mean ‘is_empty’? [-Werror=implicit-function-declaration]
+  179 |     while (!isEmpty(stack)) {
+      |             ^~~~~~~
+      |             is_empty
+sudoku.c:182:25: error: void value not ignored as it ought to be
+  182 |         Node* current = pop(stack); // Sacar y eliminar el primer nodo de la pila
+      |                         ^~~
+sudoku.c:184:13: error: implicit declaration of function ‘is_final_state’ [-Werror=implicit-function-declaration]
+  184 |         if (is_final_state(current)) {
+      |             ^~~~~~~~~~~~~~
+sudoku.c:185:13: error: implicit declaration of function ‘freeStack’; did you mean ‘createStack’? [-Werror=implicit-function-declaration]
+  185 |             freeStack(stack); // Liberar la memoria utilizada por la pila
+      |             ^~~~~~~~~
+      |             createStack
+sudoku.c:189:32: error: implicit declaration of function ‘get_adjacent_nodes’; did you mean ‘get_adj_nodes’? [-Werror=implicit-function-declaration]
+  189 |         List* adjacent_nodes = get_adjacent_nodes(current); // Obtener la lista de nodos adyacentes
+      |                                ^~~~~~~~~~~~~~~~~~
+      |                                get_adj_nodes
+sudoku.c:189:32: error: initialization of ‘List *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+sudoku.c:192:9: error: unknown type name ‘ListIterator’
+  192 |         ListIterator* it = createIterator(adjacent_nodes);
+      |         ^~~~~~~~~~~~
+sudoku.c:192:28: error: implicit declaration of function ‘createIterator’ [-Werror=implicit-function-declaration]
+  192 |         ListIterator* it = createIterator(adjacent_nodes);
+      |                            ^~~~~~~~~~~~~~
+sudoku.c:192:28: error: initialization of ‘int *’ from ‘int’ makes pointer from integer without a cast [-Werror=int-conversion]
+sudoku.c:193:33: error: passing argument 1 of ‘next’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  193 |         while ((adj_node = next(it)) != NULL) {
+      |                                 ^~
+      |                                 |
+      |                                 int *
+In file included from test.c:4:
+list.h:17:18: note: expected ‘List *’ but argument is of type ‘int *’
+   17 | void* next(List* list);
+      |            ~~~~~~^~~~
+In file included from test.c:5:
+sudoku.c:197:9: error: implicit declaration of function ‘freeNode’; did you mean ‘createNode’? [-Werror=implicit-function-declaration]
+  197 |         freeNode(current); // Liberar la memoria utilizada por el nodo actual
+      |         ^~~~~~~~
+      |         createNode
+sudoku.c:198:9: error: implicit declaration of function ‘freeListIterator’ [-Werror=implicit-function-declaration]
+  198 |         freeListIterator(it); // Liberar la memoria utilizada por el iterador
+      |         ^~~~~~~~~~~~~~~~
+sudoku.c:199:9: error: implicit declaration of function ‘freeList’; did you mean ‘createList’? [-Werror=implicit-function-declaration]
+  199 |         freeList(adjacent_nodes); // Liberar la memoria utilizada por la lista de nodos adyacentes
+      |         ^~~~~~~~
+      |         createList
+cc1: all warnings being treated as errors
+Compilation failed
+cf6126f
