@@ -739,3 +739,19 @@ sudoku.c:47:5: note: in a call to function ‘subMatricesValidas’
 cc1: all warnings being treated as errors
 Compilation failed
 00798c8
+Sat 06 May 2023 04:07:32 PM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:115:28: error: passing argument 1 of ‘subMatricesValidas’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  115 |     if(subMatricesValidas(n->sudo,k)==0 )return 0;
+      |                           ~^~~~~~
+      |                            |
+      |                            int (*)[9]
+sudoku.c:47:28: note: expected ‘int (*)[10]’ but argument is of type ‘int (*)[9]’
+   47 | int subMatricesValidas(int sudoku[][COL], int k)
+      |                        ~~~~^~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+3d4ae57
