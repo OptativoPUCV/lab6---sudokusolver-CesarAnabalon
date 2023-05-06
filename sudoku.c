@@ -83,19 +83,25 @@ int is_valid(Node* n)
   
   int sub[9][10] = {0};
   //3x3
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) {
-            int num = n->sudo[i][j];
-            int submatrix_index = 3 * (i / 3) + (j / 3);
+  for (int k = 0; k < 9; k++) 
+  {
+    int submatrix_start_row = 3 * (k / 3);
+    int submatrix_start_col = 3 * (k % 3);
+  
+    for (int p = 0; p < 9; p++) 
+    {
+        int i = submatrix_start_row + (p / 3);
+        int j = submatrix_start_col + (p % 3);
+        int num = n->sudo[i][j];
 
-            // Validar submatriz
-            if (sub[submatrix_index][num] == 1) {
-                return 0; // Número repetido en la submatriz, no es válido
-            } else {
-                sub[submatrix_index][num] = 1;
-            }
+
+        if (sub[k][num] == 1) {
+            return 0; 
+        } else {
+            sub[k][num] = 1;
         }
     }
+  }
   
   return 1;
 }
