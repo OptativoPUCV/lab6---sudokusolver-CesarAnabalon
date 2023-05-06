@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
-#define FIL 9
-#define COL 9
+#define FIL 10
+#define COL 10
 
 typedef struct{
    int sudo[9][9];
