@@ -45,64 +45,49 @@ void print_node(Node* n){
 
 int is_valid(Node* n)
 {
-  int fil[9] = {0} ;
-  int i, j, r, num;
+  int rows[9][10] = {0}; // Para marcar los números en las filas
+    int cols[9][10] = {0}; // Para marcar los números en las columnas
+    int submatrices[9][10] = {0}; // Para marcar los números en las submatrices de 3x3
 
-    // filas
-  for(i=0; i<9; i++)
-  {
-    for(j=0; j<9; j++)
-    {
-      num = n->sudo[i][j];
-      if(num == 0) continue;
-      if(fil[num-1] == 1) return 0; 
-      fil[num-1] = 1;
-    }
-    for (int k = 0; k < 9; k++) 
-    {
-        fil[k] = 0;
-    }
-  }
-  
-  int col[9] = {0};
-    //columnas
-  for(i=0; i<9; i++)
-  {
-    for(j=0; j<9; j++)
-    {
-      num = n->sudo[j][i];
-      if(num == 0) continue;
-      if(col[num-1] == 1) return 0; 
-      col[num-1] = 1;
-    }
-    for (int k = 0; k < 9; k++) 
-    {
-    col[k] = 0;
-    }    
-  }
-  
-  int sub[9][10] = {0};
-  //3x3
-  for (int k = 0; k < 9; k++) 
-  {
-    int submatrix_start_row = 3 * (k / 3);
-    int submatrix_start_col = 3 * (k % 3);
-  
-    for (int p = 0; p < 9; p++) 
-    {
-        int i = submatrix_start_row + (p / 3);
-        int j = submatrix_start_col + (p % 3);
-        int num = n->sudo[i][j];
+    // Validar filas y columnas
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            int num = n->sudo[i][j];
 
+            // Validar fila
+            if (rows[i][num] == 1) {
+                return 0; // Número repetido en la fila, no es válido
+            } else {
+                rows[i][num] = 1;
+            }
 
-        if (sub[k][num] == 1) {
-            return 0; 
-        } else {
-            sub[k][num] = 1;
+            // Validar columna
+            if (cols[j][num] == 1) {
+                return 0; // Número repetido en la columna, no es válido
+            } else {
+                cols[j][num] = 1;
+            }
         }
     }
-  }
-  
+
+    // Validar submatrices de 3x3
+    for (int k = 0; k < 9; k++) {
+        int submatrix_start_row = 3 * (k / 3);
+        int submatrix_start_col = 3 * (k % 3);
+
+        for (int p = 0; p < 9; p++) {
+            int i = submatrix_start_row + (p / 3);
+            int j = submatrix_start_col + (p % 3);
+            int num = n->sudo[i][j];
+
+            // Validar submatriz
+            if (submatrices[k][num] == 1) {
+                return 0; // Número repetido en la submatriz, no es válido
+            } else {
+                submatrices[k][num] = 1;
+            }
+        }
+    }
   return 1;
 }
 

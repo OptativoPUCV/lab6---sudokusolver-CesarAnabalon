@@ -473,3 +473,9 @@ sudoku.c:49:13: error: unused variable ‘r’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 722ce4f
+Sat 06 May 2023 03:23:37 PM UTC: 
+ sudoku.c | 64 +++++++++++++++++++++++++---------------------------------------
+ 1 file changed, 25 insertions(+), 39 deletions(-)
+ tests:  1|4
+total_score: 10/70
+df0db56
