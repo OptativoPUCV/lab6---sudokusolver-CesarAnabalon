@@ -1004,3 +1004,26 @@ sudoku.c:47:28: note: expected ‘int (*)[10]’ but argument is of type ‘int 
 cc1: all warnings being treated as errors
 Compilation failed
 abc2c1b
+Sat 06 May 2023 04:28:50 PM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:112:28: error: passing argument 1 of ‘subMatricesValidas’ from incompatible pointer type [-Werror=incompatible-pointer-types]
+  112 |     if(subMatricesValidas(n->sudo,k)==0 )return 0;
+      |                           ~^~~~~~
+      |                            |
+      |                            int (*)[9]
+sudoku.c:47:28: note: expected ‘int (*)[10]’ but argument is of type ‘int (*)[9]’
+   47 | int subMatricesValidas(int sudoku[FIL][COL],int k)
+      |                        ~~~~^~~~~~~~~~~~~~~~
+sudoku.c:112:8: error: ‘subMatricesValidas’ accessing 400 bytes in a region of size 324 [-Werror=stringop-overflow=]
+  112 |     if(subMatricesValidas(n->sudo,k)==0 )return 0;
+      |        ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+sudoku.c:112:8: note: referencing argument 1 of type ‘int (*)[10]’
+sudoku.c:47:5: note: in a call to function ‘subMatricesValidas’
+   47 | int subMatricesValidas(int sudoku[FIL][COL],int k)
+      |     ^~~~~~~~~~~~~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+a6ae75d
